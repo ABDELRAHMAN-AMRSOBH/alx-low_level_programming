@@ -8,7 +8,7 @@
 /**
  * main - Entry point
  * Description: assign random number and print positive if positive otherwice
- * 		prints negative
+ *		prints negative
  *
  * Return: Always 0
 */
