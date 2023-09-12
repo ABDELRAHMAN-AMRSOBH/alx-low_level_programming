@@ -13,8 +13,8 @@ int main(void)
 
 	for (; i < 49; i++)
 	{
-		printf("%ld, ", arr[i % 2]);
+		printf("%lld, ", arr[i % 2]);
 		arr[i % 2] += arr[(i + 1) % 2];
 	}
-	printf("%ld\n", arr[i % 2]);
+	printf("%lld\n", arr[i % 2]);
 }
