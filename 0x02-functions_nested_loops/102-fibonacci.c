@@ -8,13 +8,16 @@
 
 int main(void)
 {
-	long long arr[2] = {1, 2};
-	int i = 0;
+	unsigned long fib1 = 0, fib2 = 1, sum;
+	int i;
 
-	for (; i < 49; i++)
+	for (i = 0; i < 49; i++)
 	{
-		printf("%lu, ", arr[i % 2]);
-		arr[i % 2] += arr[(i + 1) % 2];
+		sum = fib1 + fib2;
+		printf("%lu, ", sum);
+		fib1 = fib2;
+		fib2 = sum;
+
 	}
-	printf("%lu\n", arr[i % 2]);
+	printf("%lu\n", fib1 + fib2);
 }
