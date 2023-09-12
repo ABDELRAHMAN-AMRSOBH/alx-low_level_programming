@@ -20,4 +20,5 @@ int main(void)
 
 	}
 	printf("%lu\n", fib1 + fib2);
+	return (0);
 }
