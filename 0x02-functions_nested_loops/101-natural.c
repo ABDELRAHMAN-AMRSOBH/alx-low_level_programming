@@ -8,14 +8,14 @@
 
 int main(void)
 {
-	int result = 0, count;
+	int result = 0, count = 0;
 
-	count = 1024 / 3;
-	result += 3 * (count * (count + 1)) / 2;
-	count = 1024 / 5;
-	result += 5 * (count * (count + 1)) / 2;
-	count = 1024 / 15;
-	result -= 15 * (count * (count + 1)) / 2;
+	while (count < 1024)
+	{
+		if (count % 3 == 0 || count % 5 == 0)
+			result += count;
+		count++;
+	}
 	printf("%d\n", result);
 	return (0);
 }
