@@ -2,7 +2,7 @@
 
 /**
  * print_diagonal - prints diagonal using \
- * @n: size
+ * @n: input size
 */
 
 void print_diagonal(int n)
@@ -14,9 +14,9 @@ void print_diagonal(int n)
 		count = i;
 		while (count-- > 0)
 			_putchar(' ');
-		_putchar('\');
+		_putchar('\\');
 		if (n)
-			_putchar('\n\);
+			_putchar('\n');
 		i++;
 	}
 	_putchar('\n');
