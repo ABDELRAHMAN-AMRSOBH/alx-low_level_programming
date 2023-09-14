@@ -6,5 +6,5 @@
 
 int _isupper(int c)
 {
-	return ('z' >= c && c >= 'a');
+	return ('Z' >= c && c >= 'A');
 }
