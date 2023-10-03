@@ -73,7 +73,7 @@ char **strtow(char *str)
 	list = malloc(sizeof(list) * words);
 	if (list == NULL || words == 0)
 		return (NULL);
-	for (word = 0; word < words; word++)
+	for (word = 0; word < words - 1; word++)
 	{
 		index = 0;
 		str = dodge_space(str);
