@@ -36,7 +36,7 @@ char *dodge_word(char *str)
 
 int get_length(char *str)
 {
-	int length = 0;
+	int length = 1;
 
 	while (*str && *str != ' ' && *str != '\n')
 	{
