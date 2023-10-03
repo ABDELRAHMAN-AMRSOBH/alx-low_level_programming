@@ -11,7 +11,7 @@
 char *dodge_space(char *str)
 {
 	while (*str == ' ')
-		*str++;
+		str++;
 	return (str);
 }
 
@@ -24,7 +24,7 @@ char *dodge_space(char *str)
 char *dodge_word(char *str)
 {
 	while (*str != ' ' && *str != '\0')
-		*str++;
+		str++;
 	return (str);
 }
 
@@ -41,7 +41,7 @@ int get_length(char *str)
 	while (*str && *str != ' ')
 	{
 		length++;
-		*str++;
+		str++;
 	}
 	return (length);
 }
