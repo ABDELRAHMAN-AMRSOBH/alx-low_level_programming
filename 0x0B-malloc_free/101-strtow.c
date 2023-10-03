@@ -36,13 +36,14 @@ char *dodge_word(char *str)
 
 int get_length(char *str)
 {
-	int length = 1;
+	int length = 0;
 
-	while (*str && *str != ' ')
+	while (*str && *str != ' ' && *str != '\n')
 	{
 		length++;
 		str++;
 	}
+
 	return (length);
 }
 
@@ -77,7 +78,7 @@ char **strtow(char *str)
 		index = 0;
 		str = dodge_space(str);
 		length = get_length(str);
-		list[word] = malloc(sizeof(char) * length);
+		list[word] = malloc(sizeof(char) * length + 1);
 		if (list[word] == NULL)
 		{
 			for (word = word - 1; word >= 0; word--)
