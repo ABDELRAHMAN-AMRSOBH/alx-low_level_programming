@@ -36,7 +36,7 @@ char *dodge_word(char *str)
 
 int get_length(char *str)
 {
-	int length = 1;
+	int length = 0;
 
 	while (*str && *str != ' ' && *str != '\n')
 	{
@@ -55,7 +55,7 @@ int get_length(char *str)
 
 char **strtow(char *str)
 {
-	int words = 0, word, length, index;
+	int words = 1, word, length, index;
 	char *copy = str;
 	char **list;
 
