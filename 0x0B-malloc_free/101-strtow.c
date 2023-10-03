@@ -70,7 +70,7 @@ char **strtow(char *str)
 		copy = dodge_space(copy);
 	}
 	list = malloc(sizeof(list) * words);
-	if (list == NULL)
+	if (list == NULL || words == 0)
 		return (NULL);
 	for (word = 0; word < words; word++)
 	{
