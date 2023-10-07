@@ -1,116 +1,114 @@
+#include "main.h"
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
 
 /**
- * check - checks if str is composite of digits only
- * @str: input char *
- * Return: 0 or 1
-*/
-
-int check(char *str)
+ * _isdigit - checks if character is digit
+ * @c: the character to check
+ *
+ * Return: 1 if digit, 0 otherwise
+ */
+int _isdigit(int c)
 {
-	while (*str)
-	{
-		if (*str >= '0' && *str <= '9')
-			str++;
-		else
-			return (0);
-	}
-	return (1);
+	return (c >= '0' && c <= '9');
 }
 
 /**
- * removeZero - removes zeros from start of number
- * @str: input number
- * Return: number
-*/
-
-char *removeZero(char *str)
+ * _strlen - returns the length of a string
+ * @s: the string whose length to check
+ *
+ * Return: integer length of string
+ */
+int _strlen(char *s)
 {
-	int i = 0, l = strlen(str);
-	char *new;
+	int i = 0;
 
-	while (str[i] == '0' && i < l)
+	while (*s++)
 		i++;
-	new = malloc(strlen(str) - i);
-	while (l >= 0)
-	{
-		new[l - i] = str[l];
-		l--;
-	}
-	return (new);
+	return (i);
 }
 
 /**
- * multiply - takes 2 nums multiply them and return result
- * @num1: number1
- * @num2: number2
- * Return: result
-*/
-
-char *multiply(char *num1, char *num2)
+ * big_multiply - multiply two big number strings
+ * @s1: the first big number string
+ * @s2: the second big number string
+ *
+ * Return: the product big number string
+ */
+char *big_multiply(char *s1, char *s2)
 {
-	int size1 = strlen(num1), size2 = strlen(num2);
-	int total_size = size1 + size2;
-	char *result = malloc(total_size--);
-	int carry = 0, count = 0, loop = 0, sign = 0;
-	int digit_num1, digit_num2, l, r, i, number;
+	char *r;
+	int l1, l2, a, b, c, x;
 
-	while (loop < size1 + size2)
+	l1 = _strlen(s1);
+	l2 = _strlen(s2);
+	r = malloc(a = x = l1 + l2);
+	if (!r)
+		printf("Error\n"), exit(98);
+	while (a--)
+		r[a] = 0;
+
+	for (l1--; l1 >= 0; l1--)
 	{
-		loop++;
-		i = 0;
-		number = carry;
-		while (i <= count)
+		if (!_isdigit(s1[l1]))
 		{
-			if (num1[l] == '-')
-				sign++;
-			if (num2[r] == '-')
-				sign++;
-			l = size1 - 1 - count + i;
-			r = size2 - 1 - i;
-			digit_num1 = (l >= 0 && l < size1) ? num1[l] - '0' : 0;
-			digit_num2 = (r >= 0 && r < size2) ? num2[r] - '0' : 0;
-			i++;
-			number += digit_num1 * digit_num2;
+			free(r);
+			printf("Error\n"), exit(98);
 		}
-		carry = number / 10;
-		number %= 10;
-		result[total_size--] = '0' + number;
-		count++;
+		a = s1[l1] - '0';
+		c = 0;
+
+		for (l2 = _strlen(s2) - 1; l2 >= 0; l2--)
+		{
+			if (!_isdigit(s2[l2]))
+			{
+				free(r);
+				printf("Error\n"), exit(98);
+			}
+			b = s2[l2] - '0';
+
+			c += r[l1 + l2 + 1] + (a * b);
+			r[l1 + l2 + 1] = c % 10;
+
+			c /= 10;
+		}
+		if (c)
+			r[l1 + l2 + 1] += c;
 	}
-	if (sign % 2)
-		result[total_size] = '-';
-	result = removeZero(result);
-	return (result);
+	return (r);
 }
 
-/**
- * main - Entry point
- * @argc: int count of argv
- * @argv: arguments
- * Return: 0
-*/
 
+/**
+ * main - multiply two big number strings
+ * @argc: the number of arguments
+ * @argv: the argument vector
+ *
+ * Return: Always 0 on success.
+ */
 int main(int argc, char **argv)
 {
-	char *result;
+	char *r;
+	int a, c, x;
 
 	if (argc != 3)
+		printf("Error\n"), exit(98);
+
+	x = _strlen(argv[1]) + _strlen(argv[2]);
+	r = big_multiply(argv[1], argv[2]);
+	c = 0;
+	a = 0;
+	while (c < x)
 	{
-		printf("Error\n");
-		exit(98);
+		if (r[c])
+			a = 1;
+		if (a)
+			_putchar(r[c] + '0');
+		c++;
 	}
-	if (check(argv[1]) && check(argv[2]))
-	{
-		result = multiply(argv[1], argv[2]);
-		printf("%s\n", result);
-	}
-	else
-	{
-		printf("Error\n");
-		exit(98);
-	}
+	if (!a)
+		_putchar('0');
+	_putchar('\n');
+	free(r);
 	return (0);
 }
