@@ -54,7 +54,7 @@ char *multiply(char *num1, char *num2)
 	int size1 = strlen(num1), size2 = strlen(num2);
 	int total_size = size1 + size2;
 	char *result = malloc(total_size--);
-	int carry = 0, count = 0, loop = 0;
+	int carry = 0, count = 0, loop = 0, sign = 0;
 	int digit_num1, digit_num2, l, r, i, number;
 
 	while (loop < size1 + size2)
@@ -64,6 +64,10 @@ char *multiply(char *num1, char *num2)
 		number = carry;
 		while (i <= count)
 		{
+			if (num1[l] == '-')
+				sign++;
+			if (num2[r] == '-')
+				sign++;
 			l = size1 - 1 - count + i;
 			r = size2 - 1 - i;
 			digit_num1 = (l >= 0 && l < size1) ? num1[l] - '0' : 0;
@@ -76,6 +80,8 @@ char *multiply(char *num1, char *num2)
 		result[total_size--] = '0' + number;
 		count++;
 	}
+	if (sign % 2)
+		result[total_size] = '-';
 	result = removeZero(result);
 	return (result);
 }
@@ -93,8 +99,8 @@ int main(int argc, char **argv)
 
 	if (argc != 3)
 	{
-	printf("Error\n");
-	exit(98);
+		printf("Error\n");
+		exit(98);
 	}
 	if (check(argv[1]) && check(argv[2]))
 	{
