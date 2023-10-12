@@ -9,7 +9,6 @@ void print_all(const char * const format, ...)
 {
 	va_list ap;
 	char *t;
-	char *separator = ", ";
 	int i = 0;
 
 	va_start(ap, format);
@@ -31,6 +30,11 @@ void print_all(const char * const format, ...)
 				if (!t)
 					t = "(nil)";
 				printf("%s", t);
+				break;
+			default:
+				va_end(ap);
+				i++;
+				continue;
 		}
 		if (format[i + 1] != '\0')
 			printf(", ");
