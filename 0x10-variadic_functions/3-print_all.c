@@ -12,6 +12,11 @@ void print_all(const char * const format, ...)
 	char *separator = ", ";
 	int i = 0;
 
+	if (!format)
+	{
+		printf("\n");
+		return;
+	}
 	va_start(ap, format);
 	while (format[i])
 	{
@@ -20,13 +25,13 @@ void print_all(const char * const format, ...)
 		switch (format[i])
 		{
 			case 'c':
-				printf("%c%s", (char) va_arg(ap, int), separator);
+				printf("%c%s", va_arg(ap, int), separator);
 				break;
 			case 'i':
 				printf("%d%s", va_arg(ap, int), separator);
 				break;
 			case 'f':
-				printf("%f%s", (float) va_arg(ap, double), separator);
+				printf("%f%s", va_arg(ap, double), separator);
 				break;
 			case 's':
 				t = va_arg(ap, char*);
