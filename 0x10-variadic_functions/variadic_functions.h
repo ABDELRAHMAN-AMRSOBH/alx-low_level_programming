@@ -1,5 +1,5 @@
-#ifndef
-#define
+#ifndef MY_HEADER
+#define	MY_HEADER
 
 #include <stdio.h>
 #include <stdarg.h>
