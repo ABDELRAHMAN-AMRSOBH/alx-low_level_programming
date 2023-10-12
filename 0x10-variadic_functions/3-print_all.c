@@ -1,4 +1,4 @@
-#include "varadic_functions.h"
+#include "variadic_functions.h"
 
 /**
  * print_all - print numbers and strings
@@ -8,16 +8,16 @@
 void print_all(const char * const format, ...)
 {
 	va_list ap;
-	char *ptr = format;
 	char *t;
 	char *separator = ", ";
+	int i = 0;
 
 	va_start(ap, format);
-	while (*ptr)
+	while (format[i])
 	{
-		if (*(ptr + 1) == '\0')
+		if (format[i + 1]  == '\0')
 			separator = "\n";
-		switch (*ptr++)
+		switch (format[i])
 		{
 			case 'c':
 				printf("%c%s", va_arg(ap, int), separator);
@@ -26,7 +26,7 @@ void print_all(const char * const format, ...)
 				printf("%d%s", va_arg(ap, int), separator);
 				break;
 			case 'f':
-				printf("%f%s", va_arg(ap, float), separator);
+				printf("%f%s", va_arg(ap, double), separator);
 				break;
 			case 's':
 				t = va_arg(ap, char*);
@@ -34,6 +34,7 @@ void print_all(const char * const format, ...)
 					t = "(nil)";
 				printf("%s%s", t, separator);
 		}
+		i++;
 		va_end(ap);
 	}
 }
