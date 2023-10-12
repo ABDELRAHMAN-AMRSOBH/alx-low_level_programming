@@ -27,7 +27,7 @@ void print_all(const char * const format, ...)
 				break;
 			case 's':
 				t = va_arg(ap, char*);
-				if (!t)
+				if (t == NULL)
 					t = "(nil)";
 				printf("%s", t);
 				break;
@@ -38,6 +38,7 @@ void print_all(const char * const format, ...)
 		}
 		if (format[i + 1] != '\0')
 			printf(", ");
+
 		i++;
 		va_end(ap);
 	}
