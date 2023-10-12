@@ -9,10 +9,10 @@
 int sum_them_all(const unsigned int n, ...)
 {
 	va_list ap;
-	int sum = 0;
+	int sum = 0, cp = n;
 
 	va_start(ap, n);
-	while (n--)
+	while (cp--)
 	{
 		sum += va_arg(ap, int);
 		va_end(ap);
