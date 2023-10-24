@@ -1,4 +1,4 @@
-#include "main.h"
+#include "lists.h"
 
 /**
  * free_listint2 - free list
@@ -7,7 +7,7 @@
 
 void free_listint2(listint_t **head)
 {
-	listint_t *c = head;
+	listint_t *c;
 
 	while (head && *head)
 	{
