@@ -1,14 +1,14 @@
 #include "search_algos.h"
 
 /**
- * binary_search - implemention of binary search
+ * binary_search_helper - implemention of binary search
  * @array: list of numbers
  * @size: size of the list
  * @value: targeted value
  * Return: index if found else -1
 */
 
-int binary_search(int *array, size_t size, int value)
+int binary_search_helper(int *array, size_t size, int value)
 {
 	int left = 0, right = size - 1;
 	int middle = left + (right - left) / 2;
