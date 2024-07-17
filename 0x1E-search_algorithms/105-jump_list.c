@@ -24,13 +24,16 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 			moved++;
 			list = list->next;
 		}
-		printf("Value checked at index [%d] = [%d]\n", (int) list->index, list->n);
+		printf("Value checked at index [%d] = [%d]\n"
+		       , (int) list->index, list->n);
 		if (list->n >= value || list->index % step > 0)
 		{
-			printf("Value found between indexes [%d] and [%d]\n", (int) save->index, (int) list->index);
+			printf("Value found between indexes [%d] and [%d]\n"
+			       , (int) save->index, (int) list->index);
 			while (moved >= 0)
 			{
-				printf("Value checked at index [%d] = [%d]\n", (int) save->index, save->n);
+				printf("Value checked at index [%d] = [%d]\n"
+				       , (int) save->index, save->n);
 				if (save->n == value)
 					return (save);
 				moved--;
