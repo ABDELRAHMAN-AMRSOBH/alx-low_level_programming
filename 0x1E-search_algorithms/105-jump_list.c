@@ -1,11 +1,11 @@
 #include "search_algos.h"
 
 /**
- * jump_list - implemention of advanced jump search
+ * jump_list - implemention of jump search
  * @list: list of numbers
  * @size: size of the list
  * @value: targeted value
- * Return: index if found else -1
+ * Return: address of node or null
 */
 
 listint_t *jump_list(listint_t *list, size_t size, int value)
